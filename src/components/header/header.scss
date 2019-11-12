@@ -1,0 +1,65 @@
+.dsc-header {
+  align-items: center;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  left: 0;
+  min-height: 70px;
+  padding: 20px 50px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+  // box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+
+  .logo {
+    max-width: 250px;
+  }
+
+  .menu {
+    &-icon {
+      cursor: pointer;
+    }
+  }
+}
+
+@media (min-width: 769px) {
+  .dsc-header {
+    .logo {
+      max-width: 300px;
+    }
+
+    .menu-icon {
+      display: none;
+    }
+
+    .list-menu {
+      & > :not(:last-child) {
+        margin-right: 40px;
+      }
+
+      a {
+        color: #4A4B4C;
+        text-decoration: none;
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .dsc-header {
+    padding: 10px 10px;
+    min-height: 50px;
+
+    .list-menu {
+      display: none;
+    }
+
+    .menu {
+      &-icon {
+        width: 32px;
+      }
+    }
+  }
+}
