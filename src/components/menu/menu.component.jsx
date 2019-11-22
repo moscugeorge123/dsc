@@ -29,17 +29,17 @@ export class Menu extends React.Component {
     this.socialMedia = [
       {
         name: 'instagram',
-        link: '',
+        link: 'https://www.instagram.com/dsc.uaic/',
         logo: require('../../assets/svgs/instagram.svg')
       },
       {
         name: 'linkedin',
-        link: '',
+        link: 'https://www.linkedin.com/company/dscuaic',
         logo: require('../../assets/svgs/linkedin.svg')
       },
       {
         name: 'facebook',
-        link: '',
+        link: 'https://www.facebook.com/dsc.uaic',
         logo: require('../../assets/svgs/facebook.svg')
       }
     ];
@@ -85,7 +85,7 @@ export class Menu extends React.Component {
 
           <div className="social-media">
             {this.socialMedia.map(social => (
-              <a href={social.link} key={social.name}>
+              <a href={social.link} key={social.name} target="_blank">
                 <img src={social.logo} alt={social.name}/>
               </a>
             ))}
