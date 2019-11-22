@@ -70,7 +70,7 @@ export class Header extends React.Component {
         </div>
         <div className="list-menu">
           {this.menu.map(item => (
-            <a href={'#' + item.target} onClick={(e) => this.goTo(e, item.target)}>{item.title}</a>
+            <a key={item.target} href={'#' + item.target} onClick={(e) => this.goTo(e, item.target)}>{item.title}</a>
           ))}
         </div>
       </header>

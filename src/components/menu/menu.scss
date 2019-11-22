@@ -7,7 +7,7 @@
   position: fixed;
   transition: right 0.15s ease-in-out;
   overflow-y: auto;
-  z-index: 1;
+  z-index: 2;
   
   &.slide-right {
     right: 0;
@@ -17,12 +17,11 @@
     background-color: white;
     z-index: 1;
     width: 100%;
-    height: calc(100vh - 66px);
-    margin-top: 66px;
+    height: 100vh;
   }
 
   .dark-manta {
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.75);
     position: fixed;
     top: 0;
     left: 0;
@@ -58,7 +57,7 @@
     align-items: center;
 
     h2 {
-      color: #4A4B4C;
+      color: rgba($color: #000000, $alpha: 0.7);
     }
   }
 
