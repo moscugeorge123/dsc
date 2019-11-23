@@ -7,7 +7,7 @@
   position: fixed;
   transition: right 0.15s ease-in-out;
   overflow-y: auto;
-  z-index: 2;
+  z-index: 99;
   
   &.slide-right {
     right: 0;

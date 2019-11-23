@@ -85,7 +85,7 @@ export class Menu extends React.Component {
 
           <div className="social-media">
             {this.socialMedia.map(social => (
-              <a href={social.link} key={social.name} target="_blank">
+              <a href={social.link} key={social.name} target="_blank" rel="noopener noreferrer">
                 <img src={social.logo} alt={social.name}/>
               </a>
             ))}

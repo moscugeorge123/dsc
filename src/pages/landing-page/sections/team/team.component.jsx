@@ -1,4 +1,5 @@
 import React from 'react';
+import { QuarterCircle, Circle, VerticalPoints, Line } from '../../../../shared/svg';
 import './team.scss';
 
 export class Team extends React.Component {
@@ -6,150 +7,190 @@ export class Team extends React.Component {
     super();
     this.refresh = null;
     window.addEventListener('resize', this.resize);
-    this.members = [
-      {
-        name: 'Răzvan-Ionuț Borșan',
-        picture: require('../../../../assets/images/razvan.jpg'),
-        description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore aliquid quibusdam eius possimus, ab ipsam atque. Quaerat cupiditate nulla, explicabo quasi deleniti et autem repudiandae consequatur rem expedita amet soluta?'
-      },
+    this.randomMembers = [
       {
         name: 'Panagiotis Chontas',
         picture: require('../../../../assets/images/pana.png'),
-        description: 'Final-year student at the Faculty of Computer Science of Iasi with a vast experience in volunteering and personal development trainings. He is also the main designer of the Faculty and their permanent helping hand. The domains in his area of expertise are marketing, public speaking, brand consultancy, graphic design and UI/UX.'
+        description:
+          'Final-year student at the Faculty of Computer Science of Iasi with a vast experience in volunteering and personal development trainings. He is also the main designer of the Faculty and their permanent helping hand. The domains in his area of expertise are marketing, public speaking, brand consultancy, graphic design and UI/UX.'
       },
       {
         name: 'Radu Marinoiu',
         picture: require('../../../../assets/images/member.png'),
-        description: 'Final-year student at the Faculty of Computer Science of Iasi with experience in volunteering and skill development trainings. The domains in his area of expertise are Automation Testing, Backend, REST APIs and Git.'
+        description:
+          'Final-year student at the Faculty of Computer Science of Iasi with experience in volunteering and skill development trainings. The domains in his area of expertise are Automation Testing, Backend, REST APIs and Git.'
       },
       {
         name: 'George Moscu',
         picture: require('../../../../assets/images/member.png'),
-        description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore aliquid quibusdam eius possimus, ab ipsam atque. Quaerat cupiditate nulla, explicabo quasi deleniti et autem repudiandae consequatur rem expedita amet soluta?'
+        description:
+          'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore aliquid quibusdam eius possimus, ab ipsam atque. Quaerat cupiditate nulla, explicabo quasi deleniti et autem repudiandae consequatur rem expedita amet soluta?'
       },
       {
         name: 'Teodor Proca',
         picture: require('../../../../assets/images/member.png'),
-        description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore aliquid quibusdam eius possimus, ab ipsam atque. Quaerat cupiditate nulla, explicabo quasi deleniti et autem repudiandae consequatur rem expedita amet soluta?'
+        description:
+          'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore aliquid quibusdam eius possimus, ab ipsam atque. Quaerat cupiditate nulla, explicabo quasi deleniti et autem repudiandae consequatur rem expedita amet soluta?'
       }
+    ];
+    this.members = [
+      {
+        name: 'Răzvan-Ionuț Borșan',
+        picture: require('../../../../assets/images/razvan.jpg'),
+        description:
+          'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore aliquid quibusdam eius possimus, ab ipsam atque. Quaerat cupiditate nulla, explicabo quasi deleniti et autem repudiandae consequatur rem expedita amet soluta?'
+      },
+      ...this.random()
     ];
   }
 
+  random = () => {
+    const random = [];
+    while (this.randomMembers.length) {
+      const index = Math.floor(Math.random() * this.randomMembers.length);
+      random.push(this.randomMembers[index]);
+      this.randomMembers.splice(index, 1);
+    }
+    this.randomMembers = random;
+    return this.randomMembers;
+  };
+
   resize = () => {
-    // debounce time at 100ms
-    if (!this.refresh) {
-      this.refresh = setTimeout(() => {
-        // Mobile
-        if (window.innerWidth < 769) {
-          this.qcMobile(...this.re);
-          this.lineMobile(...this.re);
-          this.circleMobile(...this.re);
-          this.pointsMobile(...this.re);
-        }
+    // Mobile
+    if (window.innerWidth < 769) {
+      this.mobile(...this.re);
+    }
 
-        // Desktop
-        if (window.innerWidth > 768) {
-          this.qcDesktop(...this.re);
-          this.lineDesktop(...this.re);
-          this.circleDesktop(...this.re);
-          this.pointsDesktop(...this.re);
-        }
-
-        this.refresh = null;
-      }, 100);
+    // Desktop
+    if (window.innerWidth > 768) {
+      this.desktop(...this.re);
     }
   };
 
-  qcMobile = (title, details, map) => {
-    // qc top right
-    const qcTopRight = this.ge.qc.topRight.style;
-    qcTopRight.top = 20 + 'px';
-    qcTopRight.right = 0;
-    qcTopRight.left = null;
-  };
-
-  qcDesktop = (title, details, map) => {
-    // qc top right
-    const qcTopRight = this.ge.qc.topRight.style;
-    qcTopRight.top = map.offsetTop - 40 + 'px';
-    qcTopRight.left = map.offsetLeft + map.clientWidth - 20 + 'px';
-  };
-
-  lineMobile = (title, details, map) => {
-    // line title bottom
-    const lineTitleBottom = this.ge.line.titleBottom.style;
-    lineTitleBottom.top = title.offsetTop + title.clientHeight + 10 + 'px';
-    lineTitleBottom.left = title.offsetLeft - 80 + 'px';
-  };
-
-  lineDesktop = (title, details, map) => {
-    // line title bottom
-    const lineTitleBottom = this.ge.line.titleBottom.style;
-    lineTitleBottom.top = details.offsetTop + details.clientHeight + 40 + 'px';
-    lineTitleBottom.left = details.offsetLeft + 40 + 'px';
-  };
-
-  circleMobile = (title, details, map) => {
-    // circle title bottom
-    const circleTitleBottom = this.ge.circle.titleBottom.style;
-    circleTitleBottom.top = title.offsetTop + title.clientHeight + 30 + 'px';
-    circleTitleBottom.left = title.offsetLeft + title.clientWidth + 10 + 'px';
-  };
-
-  circleDesktop = (title, details, map) => {
-    // circle title bottom
-    const circleTitleBottom = this.ge.circle.titleBottom.style;
-    circleTitleBottom.top = details.offsetTop - 30 + 'px';
-    circleTitleBottom.left = details.offsetLeft + details.clientWidth / 1.5 + 'px';
-  };
-
-  pointsMobile = (title, details, map) => {
-  };
-
-  pointsDesktop = (title, details, map) => {
-  };
-
-  componentDidMount(title, details, map) {
-    this.re = [
-      // title
-      document.querySelector('#contact .title > h1'),
-      
-      // details
-      document.querySelector('#contact .details'),
-
-      // map
-      document.querySelector('#contact .map')
+  mobile = () => {
+    const colors = ['#EA4335', '#4285F4', '#FBBC04', '#34A853', '#174EA6'];
+    const opacity = [1, 0.35, 0.45];
+    const positions = [
+      { left: 20, top: 105 },
+      { right: 10, top: 10 },
+      { right: 10, top: 130 }
     ];
 
-    this.ge = {
-      qc: {
-        topRight: document.querySelector('#contact .qc-top-right'),
-        bottomLeft: document.querySelector('#contact .qc-bottom-left')
-      },
-      line: {
-        titleBottom: document.querySelector('#contact .line-title-bottom')
-      },
-      circle: {
-        titleBottom: document.querySelector('#contact .circle-title-bottom')
-      },
-      points: {
+    this.geMembers.forEach((memberForms, index) => {
+      const member = this.re[index];
+      const qc = memberForms.qc.style;
+      const line = memberForms.line.style;
+      const circle = memberForms.circle.style;
+      const pos = [...positions];
+
+      if (!member.querySelector('img').clientHeight) {
+        setTimeout(() => { this.mobile(); }, 20);
+        return;
       }
-    };
+
+      qc.top = member.offsetTop;
+      line.top = member.offsetTop;
+      circle.top = member.offsetTop;
+
+      let i = Math.floor(Math.random() * pos.length);
+      qc.top = parseInt(qc.top) + pos[i].top + 'px';
+      qc.fill = colors[Math.floor(Math.random() * colors.length)];
+      qc.fillOpacity = opacity[Math.floor(Math.random() * opacity.length)];
+      if (pos[i].left) {
+        qc.left = pos[i].left + 'px';
+        qc.right = null;
+      } else {
+        qc.right = pos[i].right + 'px';
+        qc.left = null;
+      }
+      pos.splice(i, 1);
+
+
+      i = Math.floor(Math.random() * pos.length);
+      line.top = parseInt(line.top) + pos[i].top + 'px';
+      line.fill = colors[Math.floor(Math.random() * colors.length)];
+      line.fillOpacity = opacity[Math.floor(Math.random() * opacity.length)];
+      if (pos[i].left) {
+        line.left = pos[i].left + 'px';
+        line.right = null;
+      } else {
+        line.right = pos[i].right + 'px';
+        line.left = null;
+      }
+      pos.splice(i, 1);
+
+
+      i = Math.floor(Math.random() * pos.length);
+      circle.top = parseInt(circle.top) + pos[i].top + 'px';
+      circle.fill = colors[Math.floor(Math.random() * colors.length)];
+      circle.fillOpacity = opacity[Math.floor(Math.random() * opacity.length)];
+      if (pos[i].left) {
+        circle.left = pos[i].left + 'px';
+        circle.right = null;
+      } else {
+        circle.right = pos[i].right + 'px';
+        circle.left = null;
+      }
+      pos.splice(i, 1);
+
+    });
+  };
+
+  desktop = () => {
+
+  };
+
+  componentDidMount() {
+    this.re = [];
+    this.geMembers = [];
+    for (let i = 0; i < this.randomMembers.length; i++) {
+      this.re.push(document.querySelector(`#team .member:nth-child(${i + 2})`));
+      this.geMembers.push({
+        qc: document.querySelectorAll(`#team .qc-member`)[i],
+        circle: document.querySelectorAll(`#team .circle-member`)[i],
+        line: document.querySelectorAll(`#team .line-member`)[i]
+      });
+    }
 
     this.resize();
   }
 
-
   render() {
     return (
-      <section className="dsc-team" id="team">
-        <div className="title">
+      <section className='dsc-team' id='team'>
+        <div className='background'>
+          <QuarterCircle className='qc-top-left' />
+          <QuarterCircle className='qc-bottom-left' />
+          <Circle className='circle-top-right' />
+          <Circle className='circle-bottom-right' />
+          <VerticalPoints className='vp-top-right1' />
+          <VerticalPoints className='vp-top-right2' />
+          <Line className='line-top-left' />
+          <Line className='line-top-right' />
+
+          <QuarterCircle className='qc-member' />
+          <Line className='line-member' />
+          <Circle className='circle-member' />
+
+          <QuarterCircle className='qc-member' />
+          <Line className='line-member' />
+          <Circle className='circle-member' />
+
+          <QuarterCircle className='qc-member' />
+          <Line className='line-member' />
+          <Circle className='circle-member' />
+
+          <QuarterCircle className='qc-member' />
+          <Line className='line-member' />
+          <Circle className='circle-member' />
+        </div>
+        <div className='title'>
           <h1>Team</h1>
         </div>
-        <div className="members">
+        <div className='members'>
           {this.members.map(member => (
-            <div className="member" key={member.name}>
-              <img src={member.picture} alt={member.name}/>
+            <div className='member' key={member.name}>
+              <img src={member.picture} alt={member.name} />
               <h3>{member.name}</h3>
               <p>{member.description}</p>
             </div>

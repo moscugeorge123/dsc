@@ -1,6 +1,7 @@
 .dsc-team {
   display: flex;
   flex-direction: column;
+  position: relative;
 
   & > :not(:last-child) {
     margin-bottom: 40px;
@@ -48,6 +49,74 @@
   }
 }
 
+@media (max-width: 768px) {
+  .dsc-team {
+    .background {
+      .qc-top-left {
+        transform: rotate(0deg);
+        fill: #FBBC04;
+        fill-opacity: 0.35;
+        height: 35px;
+        top: 120px;
+      }
+
+      .circle-top-right {
+        fill: #EA4335;
+        fill-opacity: 0.35;
+        top: 30px;
+        height: 35px;
+        right: 20px;
+      }
+
+      .circle-bottom-right {
+        fill: #FBBC04;
+        top: 290px;
+        height: 15px;
+        right: 20px;
+      }
+
+      .vp-top-right1 {
+        width: 40px;
+        right: 0;
+        top: 130px;
+        fill: #999;
+      }
+      
+      .vp-top-right2 {
+        width: 40px;
+        right: 28px;
+        top: 130px;
+        fill: #999;
+      }
+
+      .line-top-left {
+        height: 8px;
+        fill: #4285F4;
+        fill-opacity: 0.45;
+        top: 280px;
+        left: 10px;
+      }
+
+      .qc-member {
+        height: 35px;
+      }
+
+      .circle-member {
+        height: 20px;
+      }
+
+      .line-member {
+        height: 8px;
+      }
+
+      .qc-bottom-left,
+      .line-top-right {
+        display: none;
+      }
+    }
+  }
+}
+
 @media (min-width: 769px) {
   .dsc-team {
     .title {
@@ -73,6 +142,86 @@
             width: 36%;
           }
         }
+      }
+    }
+
+    .background {
+      .qc-top-left {
+        transform: rotate(0deg);
+        fill: #FBBC04;
+        fill-opacity: 0.35;
+        height: 95px;
+        left: 180px;
+        top: 200px;
+      }
+
+      .qc-bottom-left {
+        transform: rotate(-90deg);
+        fill: #EA4335;
+        fill-opacity: 0.75;
+        height: 55px;
+        left: 80px;
+        top: 600px;
+      }
+
+      .circle-top-right {
+        fill: #EA4335;
+        fill-opacity: 0.35;
+        top: 100px;
+        height: 45px;
+        right: 160px;
+      }
+
+      .circle-bottom-right {
+        fill: #FBBC04;
+        top: 490px;
+        height: 30px;
+        right: 230px;
+      }
+
+      .vp-top-right1 {
+        width: 80px;
+        right: 0;
+        top: 200px;
+        fill: #999;
+      }
+      
+      .vp-top-right2 {
+        width: 80px;
+        right: 56px;
+        top: 200px;
+        fill: #999;
+      }
+
+      .line-top-left {
+        height: 18px;
+        fill: #4285F4;
+        fill-opacity: 0.45;
+        top: 460px;
+        left: 90px;
+      }
+
+      .line-top-right {
+        height: 18px;
+        fill: #FBBC04;
+        fill-opacity: 0.45;
+        top: 300px;
+        right: 180px;
+      }
+
+      .qc-member {
+        height: 35px;
+        display: none;
+      }
+
+      .circle-member {
+        height: 20px;
+        display: none;
+      }
+
+      .line-member {
+        height: 8px;
+        display: none;
       }
     }
   }

@@ -27,27 +27,20 @@ export class Contact extends React.Component {
   }
 
   resize = () => {
-    // debounce time at 100ms
-    if (!this.refresh) {
-      this.refresh = setTimeout(() => {
-        // Mobile
-        if (window.innerWidth < 769) {
-          this.qcMobile(...this.re);
-          this.lineMobile(...this.re);
-          this.circleMobile(...this.re);
-          this.pointsMobile(...this.re);
-        }
+    // Mobile
+    if (window.innerWidth < 769) {
+      this.qcMobile(...this.re);
+      this.lineMobile(...this.re);
+      this.circleMobile(...this.re);
+      this.pointsMobile(...this.re);
+    }
 
-        // Desktop
-        if (window.innerWidth > 768) {
-          this.qcDesktop(...this.re);
-          this.lineDesktop(...this.re);
-          this.circleDesktop(...this.re);
-          this.pointsDesktop(...this.re);
-        }
-
-        this.refresh = null;
-      }, 100);
+    // Desktop
+    if (window.innerWidth > 768) {
+      this.qcDesktop(...this.re);
+      this.lineDesktop(...this.re);
+      this.circleDesktop(...this.re);
+      this.pointsDesktop(...this.re);
     }
   };
 
@@ -94,17 +87,15 @@ export class Contact extends React.Component {
     circleTitleBottom.left = details.offsetLeft + details.clientWidth / 1.5 + 'px';
   };
 
-  pointsMobile = (title, details, map) => {
-  };
+  pointsMobile = (title, details, map) => {};
 
-  pointsDesktop = (title, details, map) => {
-  };
+  pointsDesktop = (title, details, map) => {};
 
   componentDidMount(title, details, map) {
     this.re = [
       // title
       document.querySelector('#contact .title > h1'),
-      
+
       // details
       document.querySelector('#contact .details'),
 
@@ -123,8 +114,7 @@ export class Contact extends React.Component {
       circle: {
         titleBottom: document.querySelector('#contact .circle-title-bottom')
       },
-      points: {
-      }
+      points: {}
     };
 
     this.resize();
@@ -133,12 +123,12 @@ export class Contact extends React.Component {
   render() {
     return (
       <section className='dsc-contact' id='contact'>
-        <div className="background">
-          <QuarterCircle className="qc-top-right" />
-          <QuarterCircle className="qc-bottom-left" />
-          <Line className="line-title-bottom" />
-          <Circle className="circle-title-bottom" />
-          <HorizontalPoints className="points-bottom" />
+        <div className='background'>
+          <QuarterCircle className='qc-top-right' />
+          <QuarterCircle className='qc-bottom-left' />
+          <Line className='line-title-bottom' />
+          <Circle className='circle-title-bottom' />
+          <HorizontalPoints className='points-bottom' />
         </div>
         <div className='title'>
           <h1>Contact</h1>
@@ -155,7 +145,7 @@ export class Contact extends React.Component {
 
         <div className='social-media'>
           {this.socialMedia.map(social => (
-            <a href={social.link} key={social.name} target="_blank">
+            <a href={social.link} key={social.name} target='_blank' rel='noopener noreferrer'>
               <img src={social.logo} alt={social.name} />
             </a>
           ))}

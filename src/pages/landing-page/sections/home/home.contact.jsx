@@ -9,32 +9,24 @@ const subtitle =
 export class Home extends React.Component {
   constructor() {
     super();
-    this.refresh = null;
     window.addEventListener('resize', this.resize);
   }
 
   resize = () => {
-    // debounce time at 100ms
-    if (!this.refresh) {
-      this.refresh = setTimeout(() => {
-        // Mobile
-        if (window.innerWidth < 769) {
-          this.qcMobile(...this.re);
-          this.lineMobile(...this.re);
-          this.circleMobile(...this.re);
-          this.pointsMobile(...this.re);
-        }
-    
-        // Desktop
-        if (window.innerWidth > 768) {
-          this.qcDesktop(...this.re);
-          this.lineDesktop(...this.re);
-          this.circleDesktop(...this.re);
-          this.pointsDesktop(...this.re);
-        }
+    // Mobile
+    if (window.innerWidth < 769) {
+      this.qcMobile(...this.re);
+      this.lineMobile(...this.re);
+      this.circleMobile(...this.re);
+      this.pointsMobile(...this.re);
+    }
 
-        this.refresh = null;
-      }, 100);
+    // Desktop
+    if (window.innerWidth > 768) {
+      this.qcDesktop(...this.re);
+      this.lineDesktop(...this.re);
+      this.circleDesktop(...this.re);
+      this.pointsDesktop(...this.re);
     }
   };
 
