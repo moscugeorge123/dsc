@@ -22,15 +22,15 @@ export class Team extends React.Component {
       },
       {
         name: 'George Moscu',
-        picture: require('../../../../assets/images/member.png'),
+        picture: require('../../../../assets/images/george.jpg'),
         description:
-          'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore aliquid quibusdam eius possimus, ab ipsam atque. Quaerat cupiditate nulla, explicabo quasi deleniti et autem repudiandae consequatur rem expedita amet soluta?'
+          'Student at Faculty of Computer Science of Iasi with experience in volunteering and skill development trainings. The domains in his area of expertise are Angular, React and Node.Js as main technologies with strong knowledge of Javascript.'
       },
       {
         name: 'Teodor Proca',
-        picture: require('../../../../assets/images/member.png'),
+        picture: require('../../../../assets/images/proca.jpg'),
         description:
-          'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore aliquid quibusdam eius possimus, ab ipsam atque. Quaerat cupiditate nulla, explicabo quasi deleniti et autem repudiandae consequatur rem expedita amet soluta?'
+          'Graduated Faculty of Computer Science Iasi. Nodejs expert. Flutter enthusiast. Experienced with full stack development, NoSQL databases, serveless applications, AWS, Google Cloud, DevOps and developing application architectures.'
       }
     ];
     this.members = [
