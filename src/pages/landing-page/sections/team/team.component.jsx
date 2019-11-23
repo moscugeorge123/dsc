@@ -16,7 +16,7 @@ export class Team extends React.Component {
       },
       {
         name: 'Radu Marinoiu',
-        picture: require('../../../../assets/images/member.png'),
+        picture: require('../../../../assets/images/radu.jpg'),
         description:
           'Final-year student at the Faculty of Computer Science of Iasi with experience in volunteering and skill development trainings. The domains in his area of expertise are Automation Testing, Backend, REST APIs and Git.'
       },
