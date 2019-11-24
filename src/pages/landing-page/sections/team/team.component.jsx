@@ -5,7 +5,8 @@ import './team.scss';
 export class Team extends React.Component {
   constructor() {
     super();
-    this.refresh = null;
+    this.screenWidth = 0;
+    this.screenHeight = 0;
     window.addEventListener('resize', this.resize);
     this.randomMembers = [
       {
@@ -38,7 +39,7 @@ export class Team extends React.Component {
         name: 'Răzvan-Ionuț Borșan',
         picture: require('../../../../assets/images/razvan.jpg'),
         description:
-          'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore aliquid quibusdam eius possimus, ab ipsam atque. Quaerat cupiditate nulla, explicabo quasi deleniti et autem repudiandae consequatur rem expedita amet soluta?'
+          'Graduate student with a strong passion for computer science, music, books and history. Skilled in Leadership, Front-end Development and Public Speaking, with an evolving interest in technologies such as Blockchain, Mobile Development and ML. Always reading.'
       },
       ...this.random()
     ];
@@ -57,10 +58,18 @@ export class Team extends React.Component {
 
   resize = () => {
     // Mobile
+    if (!this.screenHeight) {
+      this.screenHeight = window.innerHeight;
+    }
+
+    if (this.screenHeight !== window.innerHeight) {
+      return;
+    }
+
     if (window.innerWidth < 769) {
       this.mobile(...this.re);
     }
-
+    
     // Desktop
     if (window.innerWidth > 768) {
       this.desktop(...this.re);
